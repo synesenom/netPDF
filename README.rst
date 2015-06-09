@@ -13,12 +13,12 @@ prints a JSON network into a PDF file
 Requirements
 ------------
 
-- `node.js`_ to run javascript in the terminal.
+- node.js_ to run javascript in the terminal.
 - node.js packages: vm, d3, fs, jsdom, sys.
 - `librsvg<https://github.com/GNOME/librsvg>`_ to convert svg to pdf.
 - `pdfcrop<https://www.ctan.org/pkg/pdfcrop>`_ to remove margins.
 
-.. <https://nodejs.org>_
+.. _node.js: <https://nodejs.org>
 
 Install
 -------
