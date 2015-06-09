@@ -13,17 +13,16 @@ prints a JSON network into a PDF file
 Requirements
 ------------
 
-- node_ to run javascript in the terminal.
-- node.js packages: vm, d3, fs, jsdom, sys.
-- `librsvg<https://github.com/GNOME/librsvg>`_ to convert svg to pdf.
-- `pdfcrop<https://www.ctan.org/pkg/pdfcrop>`_ to remove margins.
+- ``node.js`` to run javascript in the terminal.
+- node.js packages: ``vm``, ``d3``, ``fs``, ``jsdom``, ``sys``.
+- ``librsvg`` to convert svg to pdf.
+- ``pdfcrop`` to remove margins.
 
-.. _node: <https://nodejs.org>
 
 Install
 -------
 
-Just install node.js and the other packages.
+Just install ``node.js`` and the other packages.
 
 
 Input
@@ -42,4 +41,5 @@ Credits to
 ----------
 
 http://www.pyktech.com/blog/150/
+
 http://mango-is.com/blog/engineering/pre-render-d3-js-charts-at-server-side.html
