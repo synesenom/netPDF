@@ -16,6 +16,7 @@ Requirements
 - ``node.js`` to run javascript in the terminal.
 - node.js packages: ``vm``, ``d3``, ``fs``, ``jsdom``, ``sys``.
 - ``librsvg`` to convert svg to pdf.
+- ``inkscape`` also for conversion from svg to pdf (if rsvg fails).
 - ``pdfcrop`` to remove margins.
 
 

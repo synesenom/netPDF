@@ -200,18 +200,40 @@ jsdom.env({features: {QuerySelector: true},
 			console.log('svg file is written');
 
 			exec('rsvg-convert -f pdf -o ' + params.output + ' ' + tmpSvgFile, function(rsvgError) {
-				if(rsvgError) return console.log(rsvgError);
-				console.log('pdf file is written');
-
-				// clean up
-				exec('rm ' + tmpSvgFile, function(rmError) {
-					if(rmError) return console.log(rmError);
-				});
-
-				exec('pdfcrop --margins 10 ' + params.output + ' ' + params.output, function(pdfcropError) {
-					if(pdfcropError) return console.log(pdfcropError);
-					console.log('margins set');
-				});
+				// If rsvg throws an error, try inkscape
+				if(rsvgError) {
+					console.log(rsvgError);
+					console.log('RSVG could not convert it, trying with Inkscape');
+					exec('inkscape --without-gui --export-pdf="' + params.output + '" ' + tmpSvgFile, function(inkscapeError) {
+						if(inkscapeError) {
+							console.log(inkscapeError);
+							console.log('Sorry, could not create PDF :(');
+							return;
+						}
+						else {
+							// clean up and crop margins
+							console.log('pdf file is written');
+							exec('rm ' + tmpSvgFile, function(rmError) {
+								if(rmError) return console.log(rmError);
+							});
+							exec('pdfcrop --margins 10 ' + params.output + ' ' + params.output, function(pdfcropError) {
+								if(pdfcropError) return console.log(pdfcropError);
+								console.log('margins set');
+							});
+						}
+					});
+				}
+				else {
+					// clean up and crop margins
+					console.log('pdf file is written');
+					exec('rm ' + tmpSvgFile, function(rmError) {
+						if(rmError) return console.log(rmError);
+					});
+					exec('pdfcrop --margins 10 ' + params.output + ' ' + params.output, function(pdfcropError) {
+						if(pdfcropError) return console.log(pdfcropError);
+						console.log('margins set');
+					});
+				}
 			});
 		});	
 	}
