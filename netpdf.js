@@ -14,7 +14,7 @@ args = {
 		console.log('  --help                help menu.');
 		console.log('  --input               input JSON file, required.');
 		console.log('  --output              output PDF file, required.');
-		console.log('  --node-radus          node radius [5].');
+		console.log('  --node-radius         node radius [5].');
 		console.log('  --node-color          primary node color [\'#000\'].');
 		console.log('  --node-color-2        secondary node color for isolated nodes [#ddd].');
 		console.log('  --node-stroke         node stroke color in hex code [#fff].');
@@ -110,7 +110,7 @@ params = args.get_params(process);
 console.log('reading network');
 var network = JSON.parse(fs.readFileSync(params.input, 'utf8'));
 var nodes = network['nodes'];
-var edges = network['edges'];
+var edges = network['links'];
 
 // get degrees
 var ids = {}
